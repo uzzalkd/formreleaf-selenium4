@@ -9,6 +9,7 @@ public class UserSignUp extends Base {
     public UserSignUp(WebDriver driver) {
         super(driver);
     }
+    //test
     //object repository for the user sign up pages
     private final By signUpLink = By.linkText("SIGN UP");
     private final By email = By.id("email");
