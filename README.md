@@ -47,13 +47,13 @@ Selenium 4 introduced several changes and improvements over Selenium 2. As part 
 In Selenium 4, initializing WebDriver no longer requires manually setting the system property for the driver path. The updated approach simplifies this process, allowing you to directly instantiate the WebDriver.
 
 - **Before (Selenium 2):**
-  ```java
+  ```
   WebDriver driver = new ChromeDriver();
   System.setProperty("webdriver.chrome.driver", "//path//of//the//driver");
   driver.get(baseUrl);
   ```
 - **After (Selenium 4):**
-  ```java
+  ```
   WebDriver driver = new ChromeDriver();
   driver.get(baseUrl);
   ```
@@ -63,12 +63,12 @@ In Selenium 4, initializing WebDriver no longer requires manually setting the sy
 In Selenium 2, WebDriver initialization was simpler but less flexible. Selenium 4 introduced a more robust and modular way to configure WebDriver instances using `Service` and `Options`.
 
 - **Before (Selenium 2):**
-  ```java
+  ```
   WebDriver driver = new ChromeDriver();
   ```
 
 - **After (Selenium 4):**
-  ```java
+  ```
   import org.openqa.selenium.chrome.ChromeDriver;
   import org.openqa.selenium.chrome.ChromeOptions;
   import org.openqa.selenium.chrome.ChromeDriverService;
@@ -91,16 +91,16 @@ This approach is not only compliant with Selenium 4 but also enables more granul
 In Selenium 2, methods like `findElementByClassName` and `findElementByCssSelector` were commonly used but are now deprecated in Selenium 4. I replaced these methods with the updated `By` locators.  
 
 - **Before (Selenium 2):**
-  ```java
+  ```
   WebElement element = driver.findElementByClassName("example-class");
   ```
 - **After (Selenium 4):**
-  ```java
+  ```
   WebElement element = driver.findElement(By.className("example-class"));
   ```
 
 Similarly, other deprecated methods like `findElementById`, `findElementByXPath`, etc., were replaced using the `By` class:
-  ```java
+  ```
   WebElement element = driver.findElement(By.id("example-id"));
   WebElement element = driver.findElement(By.xpath("//div[@id='example']"));
   ```
@@ -109,13 +109,13 @@ Similarly, other deprecated methods like `findElementById`, `findElementByXPath`
 Selenium 4 enhanced the Actions API, making it more reliable for complex interactions. I refactored existing code using the updated Actions API:
 
 - **Before (Selenium 2):**
-  ```java
+  ```
   Actions actions = new Actions(driver);
   actions.moveToElement(element).perform();
   ```
 
 - **After (Selenium 4):**
-  ```java
+  ```
   Actions actions = new Actions(driver);
   actions.moveToElement(element).clickAndHold().build().perform();
   ```
@@ -126,13 +126,13 @@ Selenium 4 enhanced the Actions API, making it more reliable for complex interac
 The WebDriverWait API was also improved in Selenium 4. I explored some of the new features.
 
 - **Before (Selenium 2):**
-  ```java
+  ```
   WebDriverWait wait = new WebDriverWait(driver, 10);
   WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("example-id")));
   ```
 
 - **After (Selenium 4):**
-  ```java
+  ```
   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
   WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("example-id")));
   ```
@@ -144,13 +144,13 @@ After refactoring for compatibility, I explored some of the new features introdu
 
 - **Relative Locators:**  
   Selenium 4 introduced relative locators, which simplify finding elements relative to other elements:
-  ```java
+  ```
   WebElement element = driver.findElement(RelativeLocator.with(By.tagName("input")).above(anotherElement));
   ```
 
 - **DevTools Protocol (CDP):**  
   Selenium 4 allows direct interaction with Chrome DevTools Protocol for advanced debugging and network control:
-  ```java
+  ```
   driver.executeCdpCommand("Network.enable", new HashMap<>());
   ```
 
